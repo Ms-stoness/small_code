@@ -1,0 +1,26 @@
+//TLE
+ bool canWinNim(int n) {
+        if (n == 1) return true;
+        else if (n == 2) return true;
+        else if (n == 3) return true;
+        bool m1 = true;
+        bool m2 = true;
+        bool m3 = true;
+        bool result = true;
+        for (int i=4; i<=n; ++i){
+            //result = !m1 || !m2 || !m3;
+            result = !(m1&&m2&&m3);
+            m1 = result;
+            m2 = m1;
+            m3 = m2;
+        }
+        return result;
+    }
+    
+//AC
+ bool canWinNim(int n) {
+        if (n == 1) return true;
+        else if (n == 2) return true;
+        else if (n == 3) return true;
+        return n%4;
+    }
