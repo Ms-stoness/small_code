@@ -1,0 +1,8 @@
+//多判断几次NULL可以在叶结点处减少递归深度，节省一丢丢时间。
+TreeNode* invertTree(TreeNode* root) {
+        if (root == NULL || (root->left == NULL && root->right == NULL)) return root;
+        TreeNode* temp = invertTree(root->left);
+        root->left = invertTree(root->right);
+        root->right = temp;
+        return root;
+    }
