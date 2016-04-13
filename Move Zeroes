@@ -1,0 +1,28 @@
+//20ms 数0的个数，需要遍历两次
+void moveZeroes(vector<int>& nums) {
+        if (nums.size() <= 1) return;
+        int sum = 0;
+        for (int i=0; i<nums.size(); ++i){
+            if (nums[i] == 0)
+                sum++;
+        }
+        if (sum > 0){
+            int k=0;
+            for (int i=0; i<nums.size(); ++i){
+                if (nums[i] != 0) nums[k++] = nums[i];
+            }
+            for (;k<nums.size(); ++k) nums[k] = 0;
+        }    
+    }
+    
+//用k记录下一个要填入元素的位置，是0跳过，不是0填入，k++。只需要一次遍历。
+ void moveZeroes(vector<int>& nums) {
+        if (nums.size() <= 1) return;
+        int k = 0;
+        for (int i=0; i<nums.size(); ++i){
+            if (nums[i] != 0)
+                nums[k++] = nums[i];
+        }
+        for (; k<nums.size(); ++k)
+            nums[k] = 0;
+    }
