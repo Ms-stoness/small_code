@@ -1,0 +1,39 @@
+
+ vector<int> singleNumber(vector<int>& nums) {
+        vector<int> result;
+        if (nums.size() < 2) return result;
+        int p = nums[0];
+        for (int i=1; i<nums.size(); ++i)
+            p = p^nums[i];
+        int index = 0;
+        while (p){
+            if ((p&1) == 0){
+                p = p >> 1;
+                index++;
+            }
+            else break;
+        }
+        int r1;
+        bool b1 = false;
+        int r2;
+        bool b2 = false;
+        for (int i=0; i<nums.size(); ++i){
+            if ((nums[i]>>index) & 1 == 1){
+                if (b1 == false){
+                    r1 = nums[i];
+                    b1 = true;
+                }
+                else r1 = r1 ^ nums[i];
+            }
+            else {
+                if (b2 == false){
+                    r2 = nums[i];
+                    b2 = true;
+                }
+                else r2 = r2 ^ nums[i];
+            }
+        }
+        result.push_back(r1);
+        result.push_back(r2);
+        return result;
+    }
