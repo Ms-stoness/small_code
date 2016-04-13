@@ -1,0 +1,9 @@
+//利用set<int>的find和insert，只要找到任意一个数存在两次就返回。
+bool containsDuplicate(vector<int>& nums) {
+        set<int> s;
+        for (int i=0; i<nums.size(); ++i){
+            if (s.find(nums[i]) != s.end()) return true;
+            else s.insert(nums[i]);
+        }
+        return false;
+    }
