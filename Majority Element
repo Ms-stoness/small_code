@@ -1,0 +1,16 @@
+//此处没有考虑元素不存在情况，否则还要遍历一遍数组检查找到的元素是否真的出现超过一半。
+int majorityElement(vector<int>& nums) {
+        if (nums.size() == 0) return 0;
+        if (nums.size() == 1) return nums[0];
+        int save = 0;
+        int times = 0;
+        for (int i=0; i<nums.size(); ++i){
+            if (times == 0){
+                save = nums[i];
+                times = 1;
+            }
+            else if (save == nums[i]) times++;
+            else times--;
+        }
+        return save;
+    }
