@@ -1,0 +1,8 @@
+//不会删除尾结点，所以无需担心下一个结点为NULL。
+void deleteNode(ListNode* node) {
+        if (node == NULL) return;
+        ListNode* temp = node->next;
+        node->val = temp->val;
+        node->next = temp->next;
+        delete temp;
+    }
